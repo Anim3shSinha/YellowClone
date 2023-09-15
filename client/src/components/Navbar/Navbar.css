@@ -1,0 +1,9 @@
+/* Add styles for the fixed Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white; /* Adjust background color as needed */
+  z-index: 1000;
+}
