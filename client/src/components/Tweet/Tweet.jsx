@@ -26,6 +26,21 @@ const Tweet = ({ tweet, setData }) => {
   const [isOptionsMenuOpen, setIsOptionsMenuOpen] = useState(false);
   const [imgurl, setImgUrl] = useState(null);
 
+  const [comment, setComment] = useState("");
+  const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
+  const openCommentModal = () => {
+    setIsCommentModalOpen(true);
+  };
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
+  };
+
+  const handleCommentSubmit = () => {
+    // onSubmit(comment);
+    // onRequestClose();
+    setIsCommentModalOpen(false);
+  };
+
   useEffect(() => {
     if (tweet.image) {
       if (tweet.image.data) {
@@ -319,6 +334,7 @@ const Tweet = ({ tweet, setData }) => {
                   justifyContent: "center",
                   width: "20%",
                   fontWeight: "bold",
+                  cursor: "pointer",
                 }}
                 onClick={toggleOptionsMenu}
               >
@@ -367,9 +383,42 @@ const Tweet = ({ tweet, setData }) => {
               )}
               {tweet.likes.length}
             </button>
-            <button>
-              <ChatBubbleOutlineIcon />
+            <button onClick={openCommentModal}>
+              <ChatBubbleOutlineIcon /> {comment ? "1" : ""}
             </button>
+
+            {isCommentModalOpen && (
+              <div className={`fixed inset-0 z-50 overflow-y-auto`}>
+                <div className="flex items-center justify-center min-h-screen">
+                  {/* Modal content */}
+                  <div className="bg-white rounded-lg shadow-lg p-6 w-full sm:w-3/12 mx-auto">
+                    <h2 className="text-xl font-semibold mb-4">
+                      Enter your comment:
+                    </h2>
+                    <textarea
+                      value={comment}
+                      onChange={handleCommentChange}
+                      className="w-full p-3 border rounded"
+                      rows="6"
+                    />
+                    <div className="mt-4 flex justify-end">
+                      <button
+                        onClick={handleCommentSubmit}
+                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                      >
+                        Comment
+                      </button>
+                      <button
+                        onClick={handleCommentSubmit}
+                        className="ml-2 text-gray-500 hover:text-gray-700 cursor-pointer"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <hr />
           <hr />

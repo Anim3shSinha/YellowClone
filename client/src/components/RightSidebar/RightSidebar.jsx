@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 
 const RightSidebar = () => {
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const toggleSubscribe = () => {
+    setIsSubscribed(!isSubscribed);
+  };
   // const [click, setClick] = useState(false);
   return (
     <>
@@ -11,7 +16,7 @@ const RightSidebar = () => {
           ads revenue.
         </p>
         <button
-          // onClick={setClick(true)}
+          onClick={toggleSubscribe}
           style={{
             color: "white",
             backgroundColor: "black",
@@ -19,7 +24,7 @@ const RightSidebar = () => {
             borderRadius: "30px",
           }}
         >
-          Subscribe
+          {isSubscribed ? "Subscribed" : "Subscribe"}
         </button>
       </div>
       <div

@@ -40,7 +40,7 @@ const TimelineTweet = () => {
               </div>
             );
           })
-        : "No tweets to show"}
+        : "Loading tweets"}
     </div>
   );
 };

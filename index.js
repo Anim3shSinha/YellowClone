@@ -16,7 +16,8 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 const corsOptions = {
-  origin: "https://animesh-twitter-clone.netlify.app", // Replace with your Netlify app's URL
+  origin: "https://animesh-twitter-clone.netlify.app",
+  // origin: "http://localhost:3000",
   credentials: true, // Enable credentials (cookies, authorization headers)
 };
 

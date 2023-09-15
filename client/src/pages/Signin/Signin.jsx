@@ -56,7 +56,7 @@ const Signin = () => {
   };
 
   return (
-    <form className="bg-gray-200 flex flex-col py-12 px-8 rounded-lg w-8/12 md:w-6/12 mx-auto gap-10">
+    <form className="bg-gray-100 flex flex-col py-8 px-6 rounded-lg w-10/12 md:w-3/12 mx-auto gap-6">
       <h2 className="text-3xl font-bold text-center">
         {isSignIn ? "Sign in to Twitter" : "Sign up for Twitter"}
       </h2>
@@ -97,21 +97,21 @@ const Signin = () => {
           <input
             onChange={(e) => setUsername(e.target.value)}
             type="text"
-            placeholder="username"
-            className="text-xl py-2 rounded-full px-4"
+            placeholder="Username"
+            className="text-xl py-2 rounded-full px-4 border border-gray-300 focus:outline-none focus:border-blue-500"
           />
           <input
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            placeholder="email"
+            placeholder="Email"
             required
-            className="text-xl py-2 rounded-full px-4"
+            className="text-xl py-2 rounded-full px-4 border border-gray-300 focus:outline-none focus:border-blue-500"
           />
           <input
             onChange={(e) => setPassword(e.target.value)}
             type="password"
-            placeholder="password"
-            className="text-xl py-2 rounded-full px-4"
+            placeholder="Password"
+            className="text-xl py-2 rounded-full px-4 border border-gray-300 focus:outline-none focus:border-blue-500"
           />
           <button
             onClick={handleSignup}
