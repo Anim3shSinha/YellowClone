@@ -8,7 +8,8 @@ import tweetRoutes from "./routes/tweets.js";
 import path from "path";
 import cors from "cors";
 import { fileURLToPath } from "url";
-
+import exp from "constants";
+const PORT = process.env.PORT || 5000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 console.log(__dirname);
@@ -35,19 +36,23 @@ app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/tweets", tweetRoutes);
 
-app.use(express.static(path.join(__dirname, "./client/build")));
-// app.use(express.static(path.join("./client/build")));
-app.get("*", function (_, res) {
-  res.sendFile(
-    path.join(__dirname, "./client/build/index.html"),
-    // path.join("./client/build/index.html"),
-    function (err) {
-      res.status(500).send(err);
-    }
-  );
-});
+// app.use(express.static(path.join(__dirname, "./client/build")));
+// // app.use(express.static(path.join("./client/build")));
+// app.get("*", function (_, res) {
+//   res.sendFile(
+//     path.join(__dirname, "./client/build/index.html"),
+//     // path.join("./client/build/index.html"),
+//     function (err) {
+//       res.status(500).send(err);
+//     }
+//   );
+// });
 
-app.listen(5000, () => {
+// if (process.env.NODE_ENV == "production") {
+//   app.use(express.static("client/build"));
+// }
+
+app.listen(PORT, () => {
   connect();
   console.log("Listening to port 5000");
 });
