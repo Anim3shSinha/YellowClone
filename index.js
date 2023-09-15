@@ -36,7 +36,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/tweets", tweetRoutes);
 
 app.use(express.static(path.join(__dirname, "./client/build")));
-app.use(express.static(path.join("./client/build")));
+// app.use(express.static(path.join("./client/build")));
 app.get("*", function (_, res) {
   res.sendFile(
     path.join(__dirname, "./client/build/index.html"),
