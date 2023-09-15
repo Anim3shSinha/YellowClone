@@ -17,10 +17,10 @@ const upload = multer({ storage: storage });
 const app = express.Router();
 
 // Create a Tweet
-app.post("/", verifyToken, upload.single("imageData"), createTweet);
+app.post("/", upload.single("imageData"), createTweet);
 
 // Delete a Tweet
-app.delete("/:id", verifyToken, deleteTweet);
+app.delete("/:id", deleteTweet);
 
 // Like or Dislike a Tweet
 app.put("/:id/like", likeOrDislike);
