@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { useSelector } from "react-redux";
 import Tweet from "../Tweet/Tweet";
+import { CONST } from "../../constant";
 
 const TimelineTweet = () => {
   const [timeLine, setTimeLine] = useState(null);
@@ -15,7 +16,7 @@ const TimelineTweet = () => {
       try {
         const timelineTweets = await axios.get(
           // `http://localhost:5000/api/tweets/timeline/${currentUser._id}`
-          `/api/tweets/timeline/${currentUser._id}`
+          `${CONST.server}/api/tweets/timeline/${currentUser._id}`
         );
 
         setTimeLine(timelineTweets.data);

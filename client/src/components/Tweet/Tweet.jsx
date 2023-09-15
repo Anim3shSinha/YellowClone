@@ -11,6 +11,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import CancelIcon from "@mui/icons-material/Cancel";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
+import { CONST } from "../../constant";
 
 const Tweet = ({ tweet, setData }) => {
   const { currentUser } = useSelector((state) => state.user);
@@ -83,7 +84,7 @@ const Tweet = ({ tweet, setData }) => {
 
       const response = await axios.put(
         // `http://localhost:5000/api/tweets/update/${tweetId}`,
-        `/api/tweets/update/${tweetId}`,
+        `${CONST.server}/api/tweets/update/${tweetId}`,
         formData1,
         {
           headers: {
@@ -111,7 +112,7 @@ const Tweet = ({ tweet, setData }) => {
       try {
         const findUser = await axios.get(
           // `http://localhost:5000/api/users/find/${tweet.userId}`
-          `/api/users/find/${tweet.userId}`
+          `${CONST.server}/api/users/find/${tweet.userId}`
         );
 
         setUserData(findUser.data);
@@ -128,7 +129,7 @@ const Tweet = ({ tweet, setData }) => {
     try {
       const like = await axios.put(
         // `http://localhost:5000/api/tweets/${tweet._id}/like`,
-        `/api/tweets/${tweet._id}/like`,
+        `${CONST.server}/api/tweets/${tweet._id}/like`,
         {
           id: currentUser._id,
         }
@@ -141,19 +142,19 @@ const Tweet = ({ tweet, setData }) => {
       if (location.includes("profile")) {
         const newData = await axios.get(
           // `http://localhost:5000/api/tweets/user/all/${id}`
-          `/api/tweets/user/all/${id}`
+          `${CONST.server}/api/tweets/user/all/${id}`
         );
         setData(newData.data);
       } else if (location.includes("explore")) {
         const newData = await axios.get(
           // `http://localhost:5000/api/tweets/explore`
-          `/api/tweets/explore`
+          `${CONST.server}/api/tweets/explore`
         );
         setData(newData.data);
       } else {
         const newData = await axios.get(
           // `http://localhost:5000/api/tweets/timeline/${currentUser._id}`
-          `/api/tweets/timeline/${currentUser._id}`
+          `${CONST.server}/api/tweets/timeline/${currentUser._id}`
         );
         setData(newData.data);
       }
@@ -166,7 +167,7 @@ const Tweet = ({ tweet, setData }) => {
     try {
       const response = await axios.delete(
         // `http://localhost:5000/api/tweets/delete/${tweetId}`,
-        `/api/tweets/delete/${tweetId}`,
+        `${CONST.server}/api/tweets/delete/${tweetId}`,
         {
           data: { id: userId },
         },

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import Tweet from "../Tweet/Tweet";
+import { CONST } from "../../constant";
 
 const ExploreTweets = () => {
   const [explore, setExplore] = useState(null);
@@ -13,7 +14,7 @@ const ExploreTweets = () => {
       try {
         const exploreTweets = await axios.get(
           // "http://localhost:5000/api/tweets/explore"
-          "/api/tweets/explore"
+          `${CONST.server}/api/tweets/explore`
         );
         setExplore(exploreTweets.data);
       } catch (err) {

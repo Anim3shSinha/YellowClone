@@ -5,6 +5,7 @@ import VideoCameraBackIcon from "@mui/icons-material/VideoCameraBack";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { CONST } from "../../constant";
 
 const MainTweet = () => {
   const [tweetText, setTweetText] = useState("");
@@ -39,6 +40,7 @@ const MainTweet = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("asdf");
+
     try {
       const formData = new FormData();
       formData.append("userId", currentUser._id);
@@ -56,7 +58,7 @@ const MainTweet = () => {
 
       const submitTweet = await axios.post(
         // "http://localhost:5000/api/tweets",
-        "/api/tweets",
+        `${CONST.server}/api/tweets`,
         formData,
         {
           withCredentials: true,

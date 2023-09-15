@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { loginStart, loginSuccess, loginFailed } from "../../redux/userSlice";
 
 import { useNavigate } from "react-router-dom";
+import { CONST } from "../../constant";
 
 const Signin = () => {
   const [username, setUsername] = useState("");
@@ -20,7 +21,7 @@ const Signin = () => {
     try {
       const res = await axios.post(
         // "http://localhost:5000/api/auth/signin",
-        "/api/auth/signin",
+        `${CONST.server}/api/auth/signin`,
         {
           username,
           password,
@@ -42,7 +43,7 @@ const Signin = () => {
 
     try {
       // const res = await axios.post("http://localhost:5000/api/auth/signup", {
-      const res = await axios.post("/api/auth/signup", {
+      const res = await axios.post(`${CONST.server}/api/auth/signup`, {
         username,
         email,
         password,

@@ -7,6 +7,7 @@ import axios from "axios";
 import Tweet from "../../components/Tweet/Tweet";
 
 import { following } from "../../redux/userSlice";
+import { CONST } from "../../constant";
 
 const Profile = () => {
   const [open, setOpen] = useState(false);
@@ -28,10 +29,10 @@ const Profile = () => {
     const fetchData = async () => {
       try {
         const userTweets = await axios.get(
-          `http://localhost:5000/api/tweets/user/all/${id}`
+          `${CONST.server}/api/tweets/user/all/${id}`
         );
         const userProfile = await axios.get(
-          `http://localhost:5000/api/users/find/${id}`
+          `${CONST.server}/api/users/find/${id}`
         );
 
         setUserTweets(userTweets.data);
@@ -52,7 +53,7 @@ const Profile = () => {
     if (!currentUser.following.includes(id)) {
       try {
         const follow = await axios.put(
-          `http://localhost:5000/api/users/follow/${id}`,
+          `${CONST.server}/api/users/follow/${id}`,
           {
             id: currentUser._id,
           },
@@ -68,7 +69,8 @@ const Profile = () => {
     } else {
       try {
         const unfollow = await axios.put(
-          `http://localhost:5000/api/users/unfollow/${id}`,
+          // `${CONST.server}/api/users/unfollow/${id}`,
+          `${CONST.server}/api/users/unfollow/${id}`,
           {
             id: currentUser._id,
           },

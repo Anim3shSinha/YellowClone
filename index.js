@@ -12,11 +12,15 @@ import exp from "constants";
 const PORT = process.env.PORT || 5000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-console.log(__dirname);
 
 const app = express();
-// dotenv.config();
-// app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+
+const corsOptions = {
+  origin: "https://animesh-twitter-clone.netlify.app", // Replace with your Netlify app's URL
+  credentials: true, // Enable credentials (cookies, authorization headers)
+};
+
+app.use(cors(corsOptions));
 
 const connect = () => {
   mongoose.set("strictQuery", false);
@@ -35,22 +39,6 @@ app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/tweets", tweetRoutes);
-
-// app.use(express.static(path.join(__dirname, "./client/build")));
-// // app.use(express.static(path.join("./client/build")));
-// app.get("*", function (_, res) {
-//   res.sendFile(
-//     path.join(__dirname, "./client/build/index.html"),
-//     // path.join("./client/build/index.html"),
-//     function (err) {
-//       res.status(500).send(err);
-//     }
-//   );
-// });
-
-// if (process.env.NODE_ENV == "production") {
-//   app.use(express.static("client/build"));
-// }
 
 app.listen(PORT, () => {
   connect();
