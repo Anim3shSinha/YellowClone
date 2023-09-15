@@ -11,6 +11,7 @@ import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+console.log(__dirname);
 
 const app = express();
 // dotenv.config();
@@ -34,10 +35,12 @@ app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/tweets", tweetRoutes);
 
-app.use(express.static(path.join(__dirname, "./client/build")));
+// app.use(express.static(path.join(__dirname, "./client/build")));
+app.use(express.static(path.join("./client/build")));
 app.get("*", function (_, res) {
   res.sendFile(
-    path.join(__dirname, "./client/build/index.html"),
+    // path.join(__dirname, "./client/build/index.html"),
+    path.join("./client/build/index.html"),
     function (err) {
       res.status(500).send(err);
     }
