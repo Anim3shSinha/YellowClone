@@ -62,5 +62,8 @@ Here are some screenshots from the Twitter Clone application to give you a glimp
 2. **Profile Page:**
    ![image](https://github.com/Anim3shSinha/YellowClone/assets/76643531/36177979-b31c-495d-b40b-9ee75c457bee)
 3. **Editing Tweets:**
-  ![image](https://github.com/Anim3shSinha/YellowClone/assets/76643531/0e3dc74c-ad07-44e8-bcb1-1369431d1e41) 
+  ![image](https://github.com/Anim3shSinha/YellowClone/assets/76643531/0e3dc74c-ad07-44e8-bcb1-1369431d1e41)
+4. **Follow other users**
+   ![image](https://github.com/Anim3shSinha/YellowClone/assets/76643531/ed63bb83-bb99-4134-9347-a08087b11464)
+
 
